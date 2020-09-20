@@ -17,7 +17,6 @@ const AnimalsService = {
   },
 
   getByZip(db, zip) {
-    console.log(findMoreZips(zip));
     return db("neverlostdb_animals")
       .select("*")
       .where((animal) => animal.whereIn("zip_code", findMoreZips(zip)));

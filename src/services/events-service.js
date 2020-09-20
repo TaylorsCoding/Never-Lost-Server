@@ -17,7 +17,6 @@ const EventsService = {
   },
 
   getByZip(db, zip) {
-    console.log(findMoreZips(zip));
     return db("neverlostdb_events")
       .select("*")
       .where((event) => event.whereIn("zip_code", findMoreZips(zip)));

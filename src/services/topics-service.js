@@ -17,7 +17,6 @@ const TopicsService = {
   },
 
   getByZip(db, zip) {
-    console.log(findMoreZips(zip));
     return db("neverlostdb_topics")
       .select("*")
       .where((topic) => topic.whereIn("zip_code", findMoreZips(zip)));

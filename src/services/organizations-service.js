@@ -17,7 +17,6 @@ const OrganizationsService = {
   },
 
   getByZip(db, zip) {
-    console.log(findMoreZips(zip));
     return db("neverlostdb_organizations")
       .select("*")
       .where((org) => org.whereIn("zip_code", findMoreZips(zip)));
