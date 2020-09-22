@@ -83,12 +83,12 @@ AnimalsRouter.route("/:animal_id")
       .catch(next);
   });
 
-/*AnimalsRouter.route("/zip/:zip_code").get((req, res, next) => {
+AnimalsRouter.route("/zip/:zip_code").get((req, res, next) => {
   AnimalsService.getByZip(req.app.get("db"), req.params.zip_code)
     .then((animal) => {
       res.json(animal);
     })
     .catch(next);
-})*/
+});
 
 module.exports = AnimalsRouter;
