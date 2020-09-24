@@ -19,38 +19,35 @@ EventsRouter.route("/")
       zip_code,
       type,
       description,
+    };
+    for (const [key, value] of Object.entries(newEvent))
+      if (value == null)
+        return res.status(400).json({
+          error: { message: `Missing '${key}' in request body` },
+        });
+    finalEvent = {
+      ...newEvent,
       animal_id,
       org_id,
     };
-    EventsService.insertEvent(req.app.get("db"), newEvent)
+    EventsService.insertEvent(req.app.get("db"), finalEvent)
       .then((event) => {
-        res.status(201).redirect(`events/${event.id}`);
+        console.log(event);
+        res.status(201).location(`/events/${event.id}`).json(event);
       })
       .catch(next);
   });
 
-EventsRouter.route("/:event_id")
-  .get((req, res, next) => {
-    EventsService.getById(req.app.get("db"), req.params.event_id)
-      .then((event) => {
-        res.json(event);
-      })
-      .catch(next);
-  })
-  .put((req, res, next) => {
-    EventsService.updateEvent(req.app.get("db"), req.params.event_id, req.body)
-      .then((event) => {
-        res.status(200).location(`events/${event.id}`).json(event);
-      })
-      .catch(next);
-  })
-  .delete((req, res, next) => {
-    EventsService.deleteEvent(req.app.get("db"), req.params.event_id)
-      .then(() => {
-        res.status(204).end();
-      })
-      .catch(next);
-  });
+EventsRouter.route("/:event_id").get((req, res, next) => {
+  EventsService.getById(req.app.get("db"), req.params.event_id)
+    .then((event) => {
+      if (!event) {
+        res.status(404).send({ error: { message: "Event doesn't exist" } });
+      }
+      res.json(event);
+    })
+    .catch(next);
+});
 
 EventsRouter.route("/zip/:zip_code").get((req, res, next) => {
   EventsService.getByZip(req.app.get("db"), req.params.zip_code)

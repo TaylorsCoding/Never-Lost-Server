@@ -17,37 +17,31 @@ TopicsRouter.route("/")
     const newTopic = {
       title,
       zip_code,
-      event_id,
     };
-    TopicsService.insertTopic(req.app.get("db"), newTopic)
+    for (const [key, value] of Object.entries(newTopic))
+      if (value == null)
+        return res.status(400).json({
+          error: { message: `Missing '${key}' in request body` },
+        });
+
+    finalTopic = { ...newTopic, event_id };
+    TopicsService.insertTopic(req.app.get("db"), finalTopic)
       .then((topic) => {
-        res.status(201).location(`topics/${topic.id}`).json(topic);
+        res.status(201).location(`/topics/${topic.id}`).json(topic);
       })
       .catch(next);
   });
 
-TopicsRouter.route("/:topic_id")
-  .get((req, res, next) => {
-    TopicsService.getById(req.app.get("db"), req.params.topic_id)
-      .then((topic) => {
-        res.json(topic);
-      })
-      .catch(next);
-  })
-  .put((req, res, next) => {
-    TopicsService.updateTopic(req.app.get("db"), req.params.topic_id, req.body)
-      .then((topic) => {
-        res.status(200).location(`topics/${topic.id}`).json(topic);
-      })
-      .catch(next);
-  })
-  .delete((req, res, next) => {
-    TopicsService.deleteTopic(req.app.get("db"), req.params.topic_id)
-      .then(() => {
-        res.status(204).end();
-      })
-      .catch(next);
-  });
+TopicsRouter.route("/:topic_id").get((req, res, next) => {
+  TopicsService.getById(req.app.get("db"), req.params.topic_id)
+    .then((topic) => {
+      if (!topic) {
+        res.status(404).send({ error: { message: "Topic doesn't exist" } });
+      }
+      res.json(topic);
+    })
+    .catch(next);
+});
 
 TopicsRouter.route("/zip/:zip_code").get((req, res, next) => {
   TopicsService.getByZip(req.app.get("db"), req.params.zip_code)
