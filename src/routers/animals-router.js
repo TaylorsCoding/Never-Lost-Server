@@ -36,6 +36,7 @@ AnimalsRouter.route("/")
         return res.status(400).json({
           error: { message: `Missing '${key}' in request body` },
         });
+    console.log(age);
     finalAnimal = {
       ...newAnimal,
       breed,
