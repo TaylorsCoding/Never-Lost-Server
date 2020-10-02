@@ -38,79 +38,89 @@ export default class Events extends Component {
           {localEvents.length > 0 ? (
             <>
               <h1>Local Events</h1>
-              {localEvents.map((event) => (
-                <EventComponent
-                  id={event.id}
-                  key={event.id}
-                  title={event.title}
-                  type={event.type}
-                  zip_code={event.zip_code}
-                  description={event.description}
-                  date_published={event.date_published}
-                  animal_id={
-                    event.animal_id
-                      ? globalAnimals.find(
-                          (animal) =>
-                            parseInt(animal.id) === parseInt(event.animal_id)
-                        )
-                        ? globalAnimals.find(
-                            (animal) =>
-                              parseInt(animal.id) === parseInt(event.animal_id)
-                          ).name
-                        : null
-                      : null
-                  }
-                  org_id={
-                    event.org_id
-                      ? globalOrganizations.find(
-                          (org) => parseInt(org.id) === parseInt(event.org_id)
-                        )
-                        ? globalOrganizations.find(
-                            (org) => parseInt(org.id) === parseInt(event.org_id)
-                          ).name
-                        : null
-                      : null
-                  }
-                />
-              ))}
+              {localEvents.map((evnt) =>
+                evnt.title.length > 0 ? (
+                  <>
+                    <EventComponent
+                      id={evnt.id}
+                      key={evnt.id}
+                      title={evnt.title}
+                      type={evnt.type}
+                      zip_code={evnt.zip_code}
+                      description={evnt.description}
+                      date_published={evnt.date_published}
+                      animal_id={
+                        evnt.animal_id
+                          ? globalAnimals.find(
+                              (animal) =>
+                                parseInt(animal.id) === parseInt(evnt.animal_id)
+                            )
+                            ? globalAnimals.find(
+                                (animal) =>
+                                  parseInt(animal.id) ===
+                                  parseInt(evnt.animal_id)
+                              ).name
+                            : null
+                          : null
+                      }
+                      org_id={
+                        evnt.org_id
+                          ? globalOrganizations.find(
+                              (org) =>
+                                parseInt(org.id) === parseInt(evnt.org_id)
+                            )
+                            ? globalOrganizations.find(
+                                (org) =>
+                                  parseInt(org.id) === parseInt(evnt.org_id)
+                              ).name
+                            : null
+                          : null
+                      }
+                    />
+                    <p>{evnt}</p>
+                  </>
+                ) : null
+              )}
             </>
           ) : null}
           <h1>All Events</h1>
-          {globalEvents.map((event) => (
-            <EventComponent
-              id={event.id}
-              key={event.id}
-              title={event.title}
-              type={event.type}
-              zip_code={event.zip_code}
-              description={event.description}
-              date_published={event.date_published}
-              animal_id={
-                event.animal_id
-                  ? globalAnimals.find(
-                      (animal) =>
-                        parseInt(animal.id) === parseInt(event.animal_id)
-                    )
+          {globalEvents.map((evnt) =>
+            evnt.title.length > 0 ? (
+              <EventComponent
+                id={evnt.id}
+                key={evnt.id}
+                title={evnt.title}
+                type={evnt.type}
+                zip_code={evnt.zip_code}
+                description={evnt.description}
+                date_published={evnt.date_published}
+                animal_id={
+                  evnt.animal_id
                     ? globalAnimals.find(
                         (animal) =>
-                          parseInt(animal.id) === parseInt(event.animal_id)
-                      ).name
+                          parseInt(animal.id) === parseInt(evnt.animal_id)
+                      )
+                      ? globalAnimals.find(
+                          (animal) =>
+                            parseInt(animal.id) === parseInt(evnt.animal_id)
+                        ).name
+                      : null
                     : null
-                  : null
-              }
-              org_id={
-                event.org_id
-                  ? globalOrganizations.find(
-                      (org) => parseInt(org.id) === parseInt(event.org_id)
-                    )
+                }
+                org_id={
+                  evnt.org_id
                     ? globalOrganizations.find(
-                        (org) => parseInt(org.id) === parseInt(event.org_id)
-                      ).name
+                        (org) => parseInt(org.id) === parseInt(evnt.org_id)
+                      )
+                      ? globalOrganizations.find(
+                          (org) => parseInt(org.id) === parseInt(evnt.org_id)
+                        ).name
+                      : null
                     : null
-                  : null
-              }
-            />
-          ))}
+                }
+              />
+            ) : null
+          )}
         </ErrorBoundary>
       </div>
     );
