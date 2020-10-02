@@ -1,0 +1,29 @@
+.description {
+  text-align: unset;
+  width: 70%;
+  font-weight: unset;
+}
+
+p {
+  text-align: unset;
+  font-weight: bold;
+}
+
+h2 {
+  text-align: unset;
+}
+
+.post-form {
+  margin-left: 20px;
+  margin-top: 50px;
+  margin-bottom: 100px;
+  text-align: unset;
+}
+
+.posts {
+  margin-left: 20px;
+}
+
+.event-content {
+  background-color: lightgreen;
+}

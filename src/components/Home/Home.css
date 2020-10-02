@@ -1,0 +1,115 @@
+h2,
+h3,
+form,
+header {
+  width: 100%;
+  text-align: center;
+}
+
+h2,
+h3,
+p {
+  font-family: "Poppins", sans-serif;
+}
+
+header {
+  padding-top: 20px;
+}
+
+p {
+  padding-left: 20px;
+  text-align: center;
+}
+
+.cols1 {
+  width: 49.5%;
+  display: inline-block;
+}
+
+.cols2 {
+  width: 49.5%;
+  display: inline-block;
+  position: relative;
+  bottom: 700px;
+  text-align: center;
+}
+
+.light-text {
+  font-weight: normal;
+}
+
+.slim {
+}
+
+@media only screen and (max-width: 414px) {
+  main {
+    text-align: center;
+  }
+  .cols2,
+  .cols1 {
+    display: block;
+    text-align: center;
+    position: static;
+    width: 100%;
+  }
+  .mobile,
+  .cols1,
+  .cols2 {
+    display: block;
+  }
+  .non-mobile {
+    display: none;
+  }
+  .cols2 {
+    padding-bottom: 100px;
+    padding-top: 50px;
+  }
+
+  p {
+    margin: 0;
+    padding: 10px;
+  }
+  ul {
+    padding: 20px;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .cols2 {
+    width: 49.5%;
+    display: inline-block;
+    position: relative;
+    bottom: 800px;
+    text-align: center;
+  }
+  .mobile {
+    display: none;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .cols2 {
+    width: 49.5%;
+    display: inline-block;
+    position: relative;
+    bottom: 500px;
+    text-align: center;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .cols2 {
+    width: 49.5%;
+    display: inline-block;
+    position: relative;
+    bottom: 300px;
+    text-align: center;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+}

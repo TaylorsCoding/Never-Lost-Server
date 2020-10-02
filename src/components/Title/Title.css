@@ -1,0 +1,66 @@
+.title-itself {
+  font-family: "Permanent Marker", cursive;
+  font-size: 150%;
+  display: inline-block;
+}
+
+.website-title {
+  text-align: center;
+  width: 40%;
+  display: inline-block;
+}
+.first-image {
+  display: inline-block;
+  width: 30%;
+}
+.second-image {
+  display: inline-block;
+  width: 30%;
+}
+
+.left-div-title {
+  background-image: url("istockphoto-494663674-170667a.jpg");
+}
+
+@media screen and (min-width: 600px) {
+  .title-itself {
+    margin-left: -20px;
+    font-family: "Permanent Marker", cursive;
+    font-size: 200%;
+  }
+
+  .website-title {
+    text-align: center;
+    width: 40%;
+    display: inline-block;
+  }
+  .first-image {
+    display: inline-block;
+    width: 30%;
+  }
+  .second-image {
+    display: inline-block;
+    width: 30%;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .website-title {
+    text-align: center;
+    display: inline-block;
+    width: 33%;
+  }
+  .title-itself {
+    margin-left: -20px;
+    font-family: "Permanent Marker", cursive;
+    font-size: 400%;
+  }
+  .first-image {
+    display: inline-block;
+    width: 33%;
+  }
+  .second-image {
+    display: inline-block;
+    width: 32%;
+  }
+}

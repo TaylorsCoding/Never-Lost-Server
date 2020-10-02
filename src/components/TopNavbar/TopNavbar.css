@@ -1,0 +1,58 @@
+.safari-home {
+  display: block;
+  color: white;
+}
+
+.safari-navbar {
+  display: inline;
+  margin-left: -10%;
+}
+
+.safari-navbar li {
+  display: inline;
+  margin-right: 5%;
+}
+
+.safari-header {
+  background-color: darkslategray;
+  padding: 1%;
+}
+
+.link-text {
+  color: white;
+  font-family: "Permanent Marker", cursive;
+}
+
+.span-a {
+  color: gold;
+}
+
+.span-e {
+  color: lightgreen;
+}
+
+.span-c {
+  color: pink;
+}
+
+.span-o {
+  color: silver;
+}
+
+@media screen and (max-width: 332px) {
+  .safari-navbar li {
+    display: inline-block;
+  }
+}
+
+@media screen and (min-width: 414px) {
+  .safari-navbar {
+    margin-left: 10%;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .safari-navbar li {
+    margin-right: 20%;
+  }
+}
